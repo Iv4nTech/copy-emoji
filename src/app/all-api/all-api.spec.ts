@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Home } from './home.component';
+import { AllApi } from './all-api';
 
-describe('Home', () => {
-  let component: Home;
-  let fixture: ComponentFixture<Home>;
+describe('AllApi', () => {
+  let component: AllApi;
+  let fixture: ComponentFixture<AllApi>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Home]
+      imports: [AllApi]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(Home);
+    fixture = TestBed.createComponent(AllApi);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });
