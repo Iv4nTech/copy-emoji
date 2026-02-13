@@ -1,31 +1,12 @@
 <h1>All emojis</h1>
-@for (item of items(); track item.name) {
-    @if (!delete) {
-        <div class="card" style="width: 18rem;">
-            <span [innerHTML]="item.htmlCode"></span>
-      <div class="card-body">
-        <h5 class="card-title">{{item.name}}</h5>
-        <p class="card-text"><strong>Category:</strong> {{item.category}}</p>
-        <p class="card-text"><strong>Group:</strong> {{item.group}}</p>
-        <button (click)="copyEmoji(item.htmlCode[0])" href="#" class="btn btn-primary">Copy</button>
-      </div>
-    </div>
-    } @else {
-
-          <div class="col d-flex flex-column align-items-center border p-2 bg-light">
-            <span class="fs-2" [innerHTML]="item.htmlCode"></span>
-            <button (click)="copyEmoji(item.htmlCode[0])" class="btn btn-outline-secondary btn-sm mt-1 w-100">
-                Copy
-            </button>
+    <div class="row">
+        @for (i of [1,2,3,4,5,6]; track i) {
+            @for (item of items(); track item.name) {
+            
+            <div class="col border border-dark">
+                <span [innerHTML]="item.htmlCode[0]"></span>
+                <button class="btn btn-primary" (click)="copyEmoji(item.htmlCode[0], item.name)">  {{ emojiCopiado() === item.name ? '¡Copied!' : 'Copy' }}</button>
+            </div>
+            }
+        } 
         </div>
-        
-    }
-
-    }
-
-@if (!delete) {
-    
-    <button (click)="changeDetails()">Delete details</button>
-}@else {
-    <button (click)="changeDetails()">Show details</button>
-}

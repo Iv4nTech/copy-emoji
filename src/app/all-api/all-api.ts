@@ -8,31 +8,22 @@ import { apiObj, DataService } from '../services/emoji.service';
   templateUrl: './all-api.html',
   styleUrl: './all-api.css',
 })
+
 export class AllApi {
-
   private _dataService = inject(DataService);
-    items = signal<apiObj[] | null>(null);
-    delete:boolean = false;
+  items = signal<apiObj[] | null>(null);
+  emojiCopiado = signal<string | null>(null); 
 
-    ngOnInit(): void {
-        this._dataService.getAllEmojis().subscribe(array => {
-            console.log(array);
-            this.items.set(array);
+  ngOnInit(): void {
+    this._dataService.getAllEmojis().subscribe(array => {
+      this.items.set(array);
+    });
+  }
 
-          })
-        }
-
-      copyEmoji(htmlCode:string) {
-           navigator.clipboard.writeText(htmlCode)
-            .then(() => {
-                alert('¡Emoji copiado al portapapeles!');
-            })
-            .catch(err => {
-                console.error('Error al copiar: ', err);
-            });
-      }
-
-      changeDetails() {
-        this.delete = !this.delete
-      }
+  copyEmoji(htmlCode: string, name: string) {
+    navigator.clipboard.writeText(htmlCode)
+      .then(() => {
+        this.emojiCopiado.set(name);
+      });
+  }
 }
