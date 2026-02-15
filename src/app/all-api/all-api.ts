@@ -12,18 +12,20 @@ import { Emoji } from '../models/emoji-interface';
 export class AllApi {
   private _dataService = inject(DataService);
   items = signal<Emoji[] | null>(null);
-  emojiCopiado = signal<string | null>(null); 
+  emojiCopied = signal<string | null>(null); 
+  cargando = signal(true);
 
   ngOnInit(): void {
     this._dataService.getAllEmojis().subscribe(array => {
       this.items.set(array);
+      this.cargando.set(false);
     });
   }
 
   copyEmoji(htmlCode: string, name: string) {
     navigator.clipboard.writeText(htmlCode)
       .then(() => {
-        this.emojiCopiado.set(name);
+        this.emojiCopied.set(name);
       });
   }
 }
