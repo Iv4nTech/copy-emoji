@@ -1,6 +1,6 @@
 import { APP_ID, Component, inject, OnInit, signal } from '@angular/core';
-import { apiObj, DataService } from '../services/emoji.service';
-
+import { DataService } from '../services/emoji.service';
+import { Emoji } from '../models/emoji-interface';
 
 @Component({
   selector: 'app-all-api',
@@ -11,7 +11,7 @@ import { apiObj, DataService } from '../services/emoji.service';
 
 export class AllApi {
   private _dataService = inject(DataService);
-  items = signal<apiObj[] | null>(null);
+  items = signal<Emoji[] | null>(null);
   emojiCopiado = signal<string | null>(null); 
 
   ngOnInit(): void {

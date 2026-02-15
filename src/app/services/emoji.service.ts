@@ -1,19 +1,13 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
-export interface apiObj {
-  name:string,
-  category:string,
-  htmlCode:string[]
-  group:string,
-  unicode:string[]
-
-}
+import { Emoji } from '../models/emoji-interface';
+import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class DataService {
-  private http = inject(HttpClient); 
-  getAllEmojis() {
-    return this.http.get<apiObj[]>('https://emojihub.yurace.pro/api/all');
+  private apiUrl = "https://emojihub.yurace.pro/api/all" 
+  constructor(private http: HttpClient){};
+  getAllEmojis():Observable<Emoji[]> {
+    return this.http.get<Emoji[]>(this.apiUrl);
   }
 }

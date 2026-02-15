@@ -8,15 +8,11 @@
 </head>
 <body>
  <header>
-    <nav>
-      <ul>
-        <li>
-          <a routerLink="">Home</a>
-          <a routerLink="all/emojis">Ver todos los emojis</a>
-        </li>
-      </ul>
-    </nav>
+<app-navbar></app-navbar>
   </header>
+<main>
+    <router-outlet></router-outlet>
+  </main>
+<app-footer></app-footer>
 </body>
 </html>
-<router-outlet />
