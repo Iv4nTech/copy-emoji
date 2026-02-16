@@ -1,6 +1,6 @@
 export interface formContact {
-    nombre: string;
+    name: string;
     email: string;
-    mensaje: string;
-    telefono?: string; 
+    message: string;
+    tel?: string; 
 }

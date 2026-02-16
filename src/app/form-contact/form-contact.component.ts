@@ -1,40 +1,52 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { formContact } from '../models/form-contact-interface';
-import emailjs, { type EmailJSResponseStatus } from '@emailjs/browser';
+import emailjs from 'emailjs-com';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-form-contact',
-  imports: [RouterLink],
+  imports: [RouterLink, FormsModule],
   templateUrl: './form-contact.component.html',
   styleUrl: './form-contact.component.css',
 })
-export class FormContactComponent implements OnInit {
+export class FormContactComponent {
 
   protected readonly user = signal<formContact>({
-    nombre: '',
+    name: '',
     email: '',
-    mensaje: '',
-    telefono: ''
+    message: '',
+    tel: ''
   })
 
-  ngOnInit(): void {
-    emailjs.init('');
-    this.user.set({
-      nombre: 'Iván',
-      email: 'ivan@ivan.com',
-      mensaje: 'Hola, soy Iván',
-      telefono: '7723823783'
-    })
-  }
+  updateField(field: keyof formContact, value: string) {
+  this.user.update(prev => ({
+    ...prev,
+    [field]: value
+  }));
+}
 
-  onSubmit(event: Event): void {
-    event.preventDefault();
-    emailjs.sendForm('', '', event.target as HTMLFormElement)
-      .then((result: EmailJSResponseStatus) => {
-        console.log('¡Correo enviado!', result.text);
-      }, (error: any) => {
-        console.error('Error:', error.text);
-      });
-  }
+onSubmit(event: Event): void {
+  const data = this.user()
+  event.preventDefault();
+  const templateParams = {
+    name: data.name,
+    email: data.email,
+    message: data.message,
+    phone: data.tel
+  };
+
+  emailjs.send(
+    '', 
+    '', 
+    templateParams, 
+    ''
+  )
+  .then((response) => {
+    console.log('Se envio el email correctamente!', response.status, response.text);
+  }, (error) => {
+    console.error('Hubo un error', error);
+  });
+}
 }

@@ -1,5 +1,5 @@
-<div class="container mt-5">
-  <div class="row justify-content-center">
+<div class="container mt-5 vh-100">
+  <div class="row justify-content-center align-items-center">
     <div class="col-md-6">
       <div class="card shadow-sm">
         <div class="card-body">
@@ -9,20 +9,23 @@
 
             <div class="mb-3">
               <label for="name" class="form-label">Full Name</label>
-              <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ej. Iván Gómez"
-                [value]="user().nombre" required>
+              <input type="text" class="form-control" id="name" name="name" placeholder="Ej. Iván Gómez"
+              [ngModel]="user().name" 
+              (ngModelChange)="updateField('name', $event)"required>
             </div>
 
             <div class="mb-3">
               <label for="email" class="form-label">E-mail</label>
               <input type="email" class="form-control" id="email" name="email" placeholder="Ej. ivan@ejemplo.com"
-                [value]="user().email" required>
+                 [ngModel]="user().email" 
+              (ngModelChange)="updateField('email', $event)"required>
             </div>
 
             <div class="mb-3">
-              <label for="mensaje" class="form-label">Message</label>
-              <textarea class="form-control" id="mensaje" name="mensaje" rows="5" placeholder="How can we help you?"
-                [value]="user().mensaje" required></textarea>
+              <label for="message" class="form-label">Message</label>
+              <textarea class="form-control" id="message" name="message" rows="5" placeholder="How can we help you?"
+                   [ngModel]="user().message" 
+              (ngModelChange)="updateField('message', $event)"></textarea>
             </div>
 
             <div class="d-grid">
