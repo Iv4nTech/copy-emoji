@@ -7,6 +7,7 @@ import { DataService } from '../services/emoji.service';
   templateUrl: './emojis-favs.component.html',
   styleUrl: './emojis-favs.component.css',
 })
+
 export class EmojisFavsComponent {
     constructor(public dataService: DataService) {}
 }
