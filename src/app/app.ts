@@ -10,6 +10,7 @@ import { FormContactComponent } from './form-contact/form-contact.component';
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
+
 export class App {
-  protected readonly title = signal('proyecto_angular');
+
 }

@@ -1,24 +1,23 @@
-<div class="container mt-4 vh-100">
+<div class="container mt-4">
   <h2 class="mb-4 text-center">My favs emojis</h2>
 
   <div class="row g-4"> @for (emoji of dataService.myFavs; track emoji.name) {
       <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-        <div class="card h-100 shadow-sm border-0 text-center">
+        <div class="card h-100 shadow-sm text-center">
           
           <div class="card-body d-flex flex-column align-items-center">
             <div class="display-1 mb-3 bg-light rounded-circle p-3" 
-                 style="width: 120px; height: 120px; display: flex; align-items: center; justify-content: center;"
                  [innerHTML]="emoji.htmlCode[0]">
             </div>
             
             <h5 class="card-title text-capitalize mb-2">{{ emoji.name }}</h5>
             <p class="card-text text-muted small mb-4">
-              Categoría: {{ emoji.category }}
+              Category: {{ emoji.category }}
             </p>
 
             <button (click)="dataService.delete(emoji)" 
                     class="btn btn-outline-danger btn-sm mt-auto w-100">
-              <i class="bi bi-trash"></i> Eliminar
+              Delete
             </button>
           </div>
 

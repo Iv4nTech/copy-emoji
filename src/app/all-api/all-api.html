@@ -1,29 +1,29 @@
-@if (cargando()) {
+@if (loading()) {
     <div class="vh-100 justify-content-center align-items-center d-flex">
         <h2>Cargando...</h2>
     </div>
 } @else {
     <div class="p-5">
         
-       @if (emojiSelect(); as seleccionado) {
+       @if (emojiSelect(); as selected) {
     <div class="card p-4 shadow-sm">
         <button class="btn btn-outline-secondary mb-3 w-auto" (click)='closeDetail()'>
             Back to the list
         </button>
         
         <div class="text-center">
-            <div style="font-size: 5rem;" [innerHTML]="seleccionado.htmlCode[0]"></div>
-            <h2 class="mt-3">{{ seleccionado.name }}</h2>
-            <p class="text-muted">Categoría: {{ seleccionado.category }}</p>
-            <p>Grupo: {{ seleccionado.group }}</p>
+            <div style="font-size: 5rem;" [innerHTML]="selected.htmlCode[0]"></div>
+            <h2 class="mt-3">{{ selected.name }}</h2>
+            <p class="text-muted">Category: {{ selected.category }}</p>
+            <p>Grupo: {{ selected.group }}</p>
             
             <button 
-                [class]="emojiCopied() === seleccionado.name ? 'btn btn-success' : 'btn btn-primary'"
-                (click)="copyEmoji(seleccionado.htmlCode[0], seleccionado.name)">
-                {{ emojiCopied() === seleccionado.name ? '¡Copied!' : 'Copy emoji' }}
+                [class]="emojiCopied() === selected.name ? 'btn btn-success' : 'btn btn-primary'"
+                (click)="copyEmoji(selected.htmlCode[0], selected.name)">
+                {{ emojiCopied() === selected.name ? '¡Copied!' : 'Copy emoji' }}
             </button>
 
-            <button (click)="addEmoji(seleccionado)" type="button" class="btn btn-outline-info">
+            <button (click)="addEmoji(selected)" type="button" class="btn btn-outline-info">
                 + Add favs
             </button>
         </div>

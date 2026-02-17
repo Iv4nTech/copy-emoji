@@ -14,7 +14,7 @@ export class AllApi {
   private _dataService = inject(DataService);
   items = signal<Emoji[] | null>(null);
   emojiCopied = signal<string | null>(null); 
-  cargando = signal(true);
+  loading = signal(true);
   private _router = inject(Router);
   private _route = inject(ActivatedRoute);
 
@@ -26,7 +26,7 @@ export class AllApi {
   ngOnInit(): void {
     this._dataService.getAllEmojis().subscribe(array => {
       this.items.set(array);
-      this.cargando.set(false);
+      this.loading.set(false);
     });
   }
 
