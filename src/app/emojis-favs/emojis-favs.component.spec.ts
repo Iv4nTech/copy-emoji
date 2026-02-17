@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DetailEmojiComponent } from './detail-emoji.component';
+import { EmojisFavsComponent } from './emojis-favs.component';
 
-describe('DetailEmojiComponent', () => {
-  let component: DetailEmojiComponent;
-  let fixture: ComponentFixture<DetailEmojiComponent>;
+describe('EmojisFavsComponent', () => {
+  let component: EmojisFavsComponent;
+  let fixture: ComponentFixture<EmojisFavsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DetailEmojiComponent]
+      imports: [EmojisFavsComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DetailEmojiComponent);
+    fixture = TestBed.createComponent(EmojisFavsComponent);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

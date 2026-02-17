@@ -6,7 +6,7 @@ import { FormContactComponent } from './form-contact/form-contact.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, NavbarComponent, FooterComponent, FormContactComponent],
+  imports: [RouterOutlet,NavbarComponent, FooterComponent],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

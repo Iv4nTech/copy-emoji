@@ -5,25 +5,29 @@
 } @else {
     <div class="p-5">
         
-        @if (emojiSelect()) {
-            <div class="card p-4 shadow-sm">
-                <button class="btn btn-outline-secondary mb-3 w-auto" (click)='closeDetail()'>
-                    Back to the list
-                </button>
-                
-                <div class="text-center">
-                    <div style="font-size: 5rem;" [innerHTML]="emojiSelect()?.htmlCode?.[0]"></div>
-                    <h2 class="mt-3">{{ emojiSelect()?.name }}</h2>
-                    <p class="text-muted">Categoría: {{ emojiSelect()?.category }}</p>
-                    <p>Grupo: {{ emojiSelect()?.group }}</p>
-                    
-                    <button 
-                        [class]="emojiCopied() === emojiSelect()?.name ? 'btn btn-success' : 'btn btn-primary'"
-                        (click)="copyEmoji(emojiSelect()!.htmlCode[0], emojiSelect()!.name)">
-                        {{ emojiCopied() === emojiSelect()?.name ? '¡Copied!' : 'Copy emoji' }}
-                    </button>
-                </div>
-            </div>
+       @if (emojiSelect(); as seleccionado) {
+    <div class="card p-4 shadow-sm">
+        <button class="btn btn-outline-secondary mb-3 w-auto" (click)='closeDetail()'>
+            Back to the list
+        </button>
+        
+        <div class="text-center">
+            <div style="font-size: 5rem;" [innerHTML]="seleccionado.htmlCode[0]"></div>
+            <h2 class="mt-3">{{ seleccionado.name }}</h2>
+            <p class="text-muted">Categoría: {{ seleccionado.category }}</p>
+            <p>Grupo: {{ seleccionado.group }}</p>
+            
+            <button 
+                [class]="emojiCopied() === seleccionado.name ? 'btn btn-success' : 'btn btn-primary'"
+                (click)="copyEmoji(seleccionado.htmlCode[0], seleccionado.name)">
+                {{ emojiCopied() === seleccionado.name ? '¡Copied!' : 'Copy emoji' }}
+            </button>
+
+            <button (click)="addEmoji(seleccionado)" type="button" class="btn btn-outline-info">
+                + Add favs
+            </button>
+        </div>
+    </div>
 
         } @else {
             <h1 class="mb-4">All emojis</h1>

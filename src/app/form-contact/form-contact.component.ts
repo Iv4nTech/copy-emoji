@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-form-contact',
-  imports: [RouterLink, FormsModule],
+  imports: [FormsModule],
   templateUrl: './form-contact.component.html',
   styleUrl: './form-contact.component.css',
 })
@@ -44,9 +44,9 @@ onSubmit(event: Event): void {
     ''
   )
   .then((response) => {
-    console.log('Se envio el email correctamente!', response.status, response.text);
+    console.log('Send email correct!', response.status, response.text);
   }, (error) => {
-    console.error('Hubo un error', error);
+    console.error('Error send to email', error);
   });
 }
 }

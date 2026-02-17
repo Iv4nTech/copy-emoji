@@ -5,7 +5,7 @@ import { Router, ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-all-api',
-  imports: [RouterLink],
+  imports: [],
   templateUrl: './all-api.html',
   styleUrl: './all-api.css',
 })
@@ -45,5 +45,9 @@ export class AllApi {
   closeDetail() {
     this._router.navigate(['/all/emojis']);
   }
+
+  addEmoji(emoji: Emoji) {
+  this._dataService.add(emoji);
+}
 
 }
